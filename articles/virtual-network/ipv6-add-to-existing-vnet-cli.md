@@ -26,6 +26,26 @@ If you decide to install and use Azure CLI locally instead, this quickstart requ
 
 ## Prerequisites
 
+To use the IPv6 for Azure virtual network feature, you must configure your subscription only once as follows:
+
+```azurecli
+az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
+```
+
+It takes up to 30 minutes for feature registration to complete. You can check your registration status by running the following Azure CLI command:
+
+```azurecli
+az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
+```
+
+After the registration is complete, run the following command:
+
+```azurecli
+az provider register --namespace Microsoft.Network
+```
+
 This article assumes that you deployed a Standard Load Balancer as described in [Quickstart: Create a Standard Load Balancer - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
 
 ## Create IPv6 addresses
